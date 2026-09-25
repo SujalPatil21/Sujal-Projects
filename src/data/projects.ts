@@ -227,7 +227,6 @@ export const projects: Project[] = [
     "slug": "wardwatch",
     "category": "Web Apps",
     "github": "https://github.com/SujalPatil21/WardWatch",
-    "live": "https://ward-watch.vercel.app/",
     "docs": "/projects/wardwatch",
     "stack": {
       "frontend": [
