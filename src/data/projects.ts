@@ -379,7 +379,11 @@ export const projects: Project[] = [
     "github": "https://github.com/SujalPatil21/Mind-Meal",
     "docs": "/projects/mind-meal",
     "stack": {
-      "frontend": [],
+      "frontend": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
       "backend": [
         "Python",
         "FastAPI"
@@ -420,7 +424,11 @@ export const projects: Project[] = [
     "github": "https://github.com/SujalPatil21/StaySplit",
     "docs": "/projects/staysplit",
     "stack": {
-      "frontend": [],
+      "frontend": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
       "backend": [
         "Spring Boot",
         "Java"
