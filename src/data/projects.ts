@@ -33,7 +33,7 @@ export const projects: Project[] = [
     "slug": "geo-watch",
     "category": "Web Apps",
     "github": "https://github.com/SujalPatil21/Geo-Watch",
-    "live": "https://geowatch.vercel.app",
+    "live": "https://geo-watch.pages.dev",
     "docs": "/projects/geo-watch",
     "stack": {
       "frontend": [

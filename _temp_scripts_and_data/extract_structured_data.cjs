@@ -8,7 +8,7 @@ const repos = ["Geo-Watch", "AASHA", "WardWatch", "Globe-Trotter", "Mind-Meal", 
 
 // Basic predefined metadata (to merge with extracted)
 const baseProjects = [
-  { slug: 'geo-watch', category: 'Web Apps', github: 'https://github.com/SujalPatil21/Geo-Watch', docs: '/projects/geo-watch', name: 'Geo-Watch', live: 'https://geowatch.vercel.app' },
+  { slug: 'geo-watch', category: 'Web Apps', github: 'https://github.com/SujalPatil21/Geo-Watch', docs: '/projects/geo-watch', name: 'Geo-Watch', live: 'https://geo-watch.pages.dev' },
   { slug: 'aasha', category: 'Web Apps', github: 'https://github.com/SujalPatil21/AASHA', docs: '/projects/aasha', name: 'AASHA' },
   { slug: 'wardwatch', category: 'Web Apps', github: 'https://github.com/SujalPatil21/WardWatch', docs: '/projects/wardwatch', name: 'WardWatch', live: 'https://ward-watch.vercel.app/' },
   { slug: 'globe-trotter', category: 'Web Apps', github: 'https://github.com/SujalPatil21/Globe-Trotter', docs: '/projects/globe-trotter', name: 'Globe-Trotter' },
