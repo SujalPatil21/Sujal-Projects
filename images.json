@@ -1,0 +1,68 @@
+{
+  "Geo-Watch": [
+    "https://img.shields.io/badge/Live-Demo-success",
+    "https://img.shields.io/badge/Performance-Report-blue",
+    "https://img.shields.io/badge/Backend-Spring%20Boot-green",
+    "https://img.shields.io/badge/Database-PostgreSQL-blue",
+    "https://img.shields.io/badge/Realtime-WebSockets-orange",
+    "https://img.shields.io/badge/Algorithm-DBSCAN-red",
+    "https://raw.githubusercontent.com/SujalPatil21/Geo-Watch/main/docs/assets/img1.jpeg",
+    "https://raw.githubusercontent.com/SujalPatil21/Geo-Watch/main/docs/assets/img2.png",
+    "https://raw.githubusercontent.com/SujalPatil21/Geo-Watch/main/docs/assets/img3.png",
+    "https://raw.githubusercontent.com/SujalPatil21/Geo-Watch/main/docs/assets/img4.png"
+  ],
+  "AASHA": [
+    "https://raw.githubusercontent.com/SujalPatil21/AASHA/main/screenshots/dashboard.png",
+    "https://raw.githubusercontent.com/SujalPatil21/AASHA/main/screenshots/role-selection.png",
+    "https://raw.githubusercontent.com/SujalPatil21/AASHA/main/screenshots/add-patient.png",
+    "https://raw.githubusercontent.com/SujalPatil21/AASHA/main/screenshots/dashboard.png"
+  ],
+  "Mind-Meal": [
+    "https://raw.githubusercontent.com/SujalPatil21/Mind-Meal/main/Project.png",
+    "https://raw.githubusercontent.com/SujalPatil21/Mind-Meal/main/architecture.png"
+  ],
+  "StaySplit": [
+    "https://raw.githubusercontent.com/SujalPatil21/StaySplit/main/architecture.png"
+  ],
+  "DISPATCHOPS": [
+    "https://img.shields.io/badge/Node.js-20+-68a063?logo=node.js&logoColor=white",
+    "https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=black",
+    "https://img.shields.io/badge/Java-21-f89820?logo=openjdk&logoColor=white",
+    "https://img.shields.io/badge/Spring%20Boot-3.5-6db33f?logo=springboot&logoColor=white",
+    "https://img.shields.io/badge/OptaPlanner-10.2-e01563?logo=redhat&logoColor=white",
+    "https://img.shields.io/badge/GraphHopper-OSM%20Routing-2c3e50",
+    "https://img.shields.io/badge/AWS%20CDK-v2-ff9900?logo=amazon-aws&logoColor=white",
+    "https://img.shields.io/badge/TypeScript-5.7-3178c6?logo=typescript&logoColor=white",
+    "https://img.shields.io/badge/License-MIT--0-green.svg",
+    "https://raw.githubusercontent.com/SujalPatil21/DISPATCHOPS/main/docs/imgs/demo_screenshot.jpeg"
+  ],
+  "Drill-Insight": [
+    "https://img.shields.io/badge/Python-3.x-blue?style=flat&logo=python",
+    "https://img.shields.io/badge/FastAPI-0.109.0-009688?style=flat&logo=fastapi",
+    "https://img.shields.io/badge/React-19.2-61DAFB?style=flat&logo=react",
+    "https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat&logo=typescript",
+    "https://img.shields.io/badge/PostgreSQL-16.x-336791?style=flat&logo=postgresql",
+    "https://img.shields.io/badge/PostGIS-Enabled-1E8CBE?style=flat&logo=postgresql",
+    "https://img.shields.io/badge/License-Not_yet_specified-lightgray?style=flat"
+  ],
+  "Mob-Alert": [
+    "https://img.shields.io/badge/Live-Demo-success",
+    "https://img.shields.io/badge/Backend-Spring%20Boot-green",
+    "https://img.shields.io/badge/Frontend-React%20%2B%20TypeScript-blue",
+    "https://img.shields.io/badge/Mobile-Flutter-02569B",
+    "https://img.shields.io/badge/Database-PostgreSQL-336791",
+    "https://img.shields.io/badge/Realtime-WebSocket%20%2B%20STOMP-orange",
+    "https://img.shields.io/badge/AI-Gemini-purple",
+    "https://img.shields.io/badge/Algorithm-DBSCAN-red"
+  ],
+  "GitGo": [
+    "https://img.shields.io/badge/VS%20Code-Extension-blue",
+    "https://img.shields.io/badge/Made%20with-TypeScript-blue",
+    "https://img.shields.io/badge/License-MIT-green"
+  ],
+  "Arch-Flow": [
+    "https://raw.githubusercontent.com/SujalPatil21/Arch-Flow/main/1.png",
+    "https://raw.githubusercontent.com/SujalPatil21/Arch-Flow/main/2.png",
+    "https://raw.githubusercontent.com/SujalPatil21/Arch-Flow/main/3.png"
+  ]
+}

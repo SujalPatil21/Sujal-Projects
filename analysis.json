@@ -1,0 +1,92 @@
+[
+  {
+    "repo": "Geo-Watch",
+    "frontend": [],
+    "backend": [],
+    "db": [],
+    "ai": [],
+    "tools": []
+  },
+  {
+    "repo": "AASHA",
+    "frontend": [],
+    "backend": [],
+    "db": [],
+    "ai": [],
+    "tools": []
+  },
+  {
+    "repo": "WardWatch",
+    "frontend": [],
+    "backend": [],
+    "db": [],
+    "ai": [],
+    "tools": []
+  },
+  {
+    "repo": "Globe-Trotter",
+    "frontend": [],
+    "backend": [],
+    "db": [],
+    "ai": [],
+    "tools": []
+  },
+  {
+    "repo": "Mind-Meal",
+    "frontend": [],
+    "backend": [],
+    "db": [],
+    "ai": [],
+    "tools": []
+  },
+  {
+    "repo": "StaySplit",
+    "frontend": [],
+    "backend": [],
+    "db": [],
+    "ai": [],
+    "tools": []
+  },
+  {
+    "repo": "DISPATCHOPS",
+    "frontend": [],
+    "backend": [],
+    "db": [],
+    "ai": [],
+    "tools": []
+  },
+  {
+    "repo": "Drill-Insight",
+    "frontend": [],
+    "backend": [],
+    "db": [],
+    "ai": [],
+    "tools": []
+  },
+  {
+    "repo": "Mob-Alert",
+    "frontend": [],
+    "backend": [],
+    "db": [],
+    "ai": [],
+    "tools": []
+  },
+  {
+    "repo": "GitGo",
+    "frontend": [],
+    "backend": [],
+    "db": [],
+    "ai": [],
+    "tools": [
+      "TypeScript"
+    ]
+  },
+  {
+    "repo": "Arch-Flow",
+    "frontend": [],
+    "backend": [],
+    "db": [],
+    "ai": [],
+    "tools": []
+  }
+]

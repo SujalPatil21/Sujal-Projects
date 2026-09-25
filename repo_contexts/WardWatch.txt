@@ -1,0 +1,621 @@
+--- REPOSITORY: WardWatch ---
+
+--- DIRECTORY STRUCTURE ---
+.gitignore
+admin1.jpg
+admin2.jpg
+Frontend/
+  .gitignore
+  eslint.config.js
+  index.html
+  package-lock.json
+  package.json
+  public/
+    animation.mp4
+    favicon.svg
+    icons.svg
+  README.md
+  src/
+    api/
+      client.js
+    App.css
+    App.jsx
+    assets/
+      animation.mp4
+      hospital_building.png
+      Landing Page Frames/
+      react.svg
+      vite.svg
+    components/
+      common/
+      CorridorScene.jsx
+      FloatingHandoverButton.jsx
+      Sidebar.jsx
+      Ward/
+    context/
+      AuthContext.jsx
+      LiveDataContext.jsx
+    index.css
+    main.jsx
+    pages/
+      AdminDashboard.jsx
+      AdminOverview.jsx
+      QueueDashboard.jsx
+      ShiftHandover.jsx
+      WardDashboard.jsx
+      WardDetailPage.jsx
+    routes/
+      ProtectedRoute.jsx
+    services/
+      wardService.js
+    utils/
+      alertUtils.js
+    websocket/
+      WebSocketService.js
+  vite.config.js
+LICENSE
+login1.jpg
+login2.jpg
+package-lock.json
+README.md
+staff1.jpg
+staff2.jpg
+wardwatch-backend/
+  .gitattributes
+  .gitignore
+  .mvn/
+    wrapper/
+      maven-wrapper.properties
+  mvnw
+  mvnw.cmd
+  pom.xml
+  src/
+    main/
+      java/
+      resources/
+    test/
+      java/
+  startup.log
+  test.js
+  test_simple.js
+
+
+--- FILE: Frontend\package.json ---
+{
+  "name": "wardwatch-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@stomp/stompjs": "^7.3.0",
+    "lucide-react": "^1.7.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router-dom": "^7.13.2",
+    "three": "^0.183.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.4.27",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.2",
+    "vite": "^8.0.1"
+  }
+}
+
+
+--- FILE: Frontend\README.md ---
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+--- FILE: README.md ---
+<h1>
+  WardWatch |
+  <a href="https://ward-watch.vercel.app/" style="font-size: 18px;"> Live Demo</a>
+</h1>
+
+
+<p align="center">
+  <b>Know every bed. Every patient. Every second.</b>
+</p>
+
+ 
+<p align="center">
+  <img src="https://img.shields.io/badge/Backend-SpringBoot-green?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Frontend-React%20%2B%20Vite-61DAFB?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Database-PostgreSQL-blue?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/RealTime-WebSockets-orange?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge"/>
+</p>
+
+---
+
+## 📌 Overview
+
+WardWatch is a **real-time hospital ward management system** that provides complete visibility into bed availability and patient flow.
+
+Instead of relying on manual registers and delayed updates, WardWatch delivers a **live dashboard** that enables hospital staff to make faster, more accurate decisions.
+
+---
+
+## 🎯 Problem
+
+- No real-time visibility of ward and bed status  
+- Information scattered across systems and manual records  
+- Delayed discharges blocking bed availability  
+- Inefficient bed utilization  
+- Decisions based on outdated data  
+
+---
+
+## 💡 Solution
+
+WardWatch provides a **centralized, real-time system** for managing ward operations efficiently.
+
+- Live tracking of bed status  
+- Automatic bed allocation and updates  
+- Multi-ward monitoring  
+- Role-based access control  
+- Shift handover summaries (printable)  
+- Smart alerts for delays and capacity  
+
+---
+
+## 🖼️ System Preview
+
+### 🔐 Login Screens
+<p align="center">
+  <img src="./login1.jpg" width="45%" />
+  <img src="./login2.jpg" width="45%" />
+</p>
+
+---
+
+### 👨‍💼 Admin Dashboard
+<p align="center">
+  <img src="./admin1.jpg" width="45%" />
+  <img src="./admin2.jpg" width="45%" />
+</p>
+
+---
+
+### 👩‍⚕️ Staff View
+<p align="center">
+  <img src="./staff1.jpg" width="45%" />
+  <img src="./staff2.jpg" width="45%" />
+</p>
+
+---
+
+## 🏗️ Architecture
+
+```
+Client (Frontend)
+        ↓
+Spring Boot API Layer
+        ↓
+Business Logic (Bed Allocation, Queue, Alerts)
+        ↓
+WebSocket Layer (Real-time Updates)
+        ↓
+PostgreSQL Database (Local / Supabase)
+```
+
+
+
+
+
+---
+
+## ⚙️ Configuration
+
+### 🔁 Profiles
+
+This project supports multiple environments:
+
+#### ▶️ Local Development
+```
+spring.profiles.active=local
+```
+
+#### ☁️ Production (Supabase)
+```
+spring.profiles.active=prod
+```
+
+---
+
+## 🚀 Running the Project
+
+```bash
+# Clone the repository
+git clone https://github.com/SujalPatil21/WardWatch.git
+
+# Navigate to project
+cd WardWatch
+
+# Run application
+./mvnw spring-boot:run
+```
+
+---
+
+## 📊 Impact
+
+- ⚡ Faster decision-making  
+- 🏥 Improved bed utilization  
+- 🔄 Efficient patient flow management  
+- 📈 Better operational visibility  
+
+---
+
+## 🔮 Future Enhancements
+
+- AI-based bed prediction  
+- Mobile app integration  
+- Analytics dashboard  
+- Hospital-wide scalability  
+
+---
+
+## 👨‍💻 Author
+
+**Shreya Awari**
+**Sujal Patil**
+**Tejas Halvankar**
+
+
+---
+
+## ⭐ Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub!
+
+---
+
+## 📄 License
+
+This project is for academic and demonstration purposes.
+
+
+--- FILE: wardwatch-backend\pom.xml ---
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.4.3</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.wardwatch</groupId>
+	<artifactId>wardwatch-backend</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name/>
+	<description/>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>21</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
+
+--- IMAGES DISCOVERED ---
+admin1.jpg
+admin2.jpg
+Frontend\package.json
+Frontend\public\favicon.svg
+Frontend\public\icons.svg
+Frontend\src\assets\hospital_building.png
+Frontend\src\assets\Landing Page Frames\ezgif-frame-001.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-002.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-003.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-004.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-005.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-006.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-007.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-008.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-009.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-010.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-011.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-012.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-013.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-014.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-015.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-016.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-017.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-018.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-019.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-020.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-021.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-022.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-023.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-024.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-025.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-026.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-027.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-028.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-029.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-030.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-031.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-032.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-033.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-034.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-035.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-036.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-037.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-038.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-039.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-040.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-041.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-042.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-043.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-044.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-045.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-046.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-047.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-048.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-049.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-050.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-051.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-052.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-053.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-054.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-055.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-056.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-057.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-058.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-059.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-060.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-061.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-062.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-063.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-064.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-065.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-066.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-067.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-068.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-069.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-070.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-071.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-072.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-073.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-074.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-075.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-076.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-077.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-078.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-079.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-080.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-081.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-082.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-083.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-084.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-085.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-086.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-087.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-088.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-089.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-090.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-091.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-092.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-093.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-094.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-095.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-096.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-097.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-098.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-099.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-100.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-101.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-102.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-103.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-104.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-105.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-106.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-107.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-108.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-109.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-110.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-111.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-112.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-113.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-114.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-115.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-116.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-117.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-118.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-119.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-120.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-121.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-122.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-123.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-124.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-125.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-126.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-127.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-128.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-129.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-130.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-131.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-132.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-133.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-134.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-135.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-136.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-137.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-138.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-139.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-140.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-141.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-142.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-143.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-144.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-145.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-146.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-147.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-148.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-149.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-150.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-151.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-152.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-153.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-154.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-155.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-156.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-157.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-158.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-159.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-160.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-161.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-162.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-163.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-164.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-165.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-166.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-167.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-168.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-169.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-170.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-171.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-172.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-173.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-174.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-175.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-176.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-177.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-178.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-179.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-180.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-181.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-182.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-183.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-184.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-185.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-186.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-187.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-188.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-189.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-190.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-191.jpg
+Frontend\src\assets\Landing Page Frames\ezgif-frame-192.jpg
+Frontend\src\assets\react.svg
+Frontend\src\assets\vite.svg
+login1.jpg
+login2.jpg
+staff1.jpg
+staff2.jpg
+wardwatch-backend\pom.xml
+

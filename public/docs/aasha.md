@@ -1,0 +1,632 @@
+# AASHA — Offline-First Health Data & Risk Flagging System
+![AASHA Dashboard](https://raw.githubusercontent.com/SujalPatil21/AASHA/main/screenshots/dashboard.png)
+
+Digitizing rural healthcare workflows without requiring internet connectivity.
+
+AASHA is an AI-assisted, offline-first health data capture and risk flagging system designed for ASHA workers operating in low-connectivity rural areas. The system converts unstructured voice or text input into structured health records and applies explainable rule-based risk indicators — without providing diagnosis or prescriptions.
+
+Write Data → Capture Offline → Flag Risk → Sync Automatically → Enable Action.
+
+---
+
+## Problem
+
+ASHA workers in rural India face operational constraints:
+
+- Unreliable or no internet connectivity  
+- Paper-based health record maintenance  
+- Delayed data reporting to PHCs  
+- Difficulty identifying high-risk health cases  
+- Lack of real-time decision support  
+
+Because existing digital systems assume continuous connectivity:
+
+- Data is lost or delayed  
+- Supervisors receive late updates  
+- High-risk cases may not be prioritized  
+- Health reporting becomes inefficient  
+
+### Root Cause
+
+Most digital health systems are cloud-first and form-heavy, while rural health workflows are conversation-driven and offline-dependent.
+
+---
+
+## Solution
+
+AASHA transforms rural health data capture into an offline-first, structured, explainable system.
+
+Everything works without internet.
+
+The system:
+
+- Accepts voice or text in local languages  
+- Converts unstructured input into structured health fields  
+- Applies rule-based risk flagging (no diagnosis)  
+- Stores data securely offline  
+- Automatically syncs when connectivity returns  
+- Provides role-based dashboards  
+
+No forced long forms.  
+No constant internet requirement.  
+No black-box AI decisions.
+
+---
+
+## System Workflow
+
+1. ASHA visits a household  
+2. Captures health details via voice or text  
+3. Data stored locally (offline mode)  
+4. AI structures data into standardized health fields  
+5. Risk engine flags abnormal conditions  
+6. When internet returns → auto sync to PHC  
+7. ANM reviews structured data  
+8. PHC doctor sees summarized high-risk view  
+
+---
+---
+
+## Screenshots
+
+### Role Selection Interface
+![Role Selection](https://raw.githubusercontent.com/SujalPatil21/AASHA/main/screenshots/role-selection.png)
+
+Allows users to choose between ASHA worker and PHC staff dashboards.
+
+---
+
+### Patient Health Record Entry
+![Add Patient](https://raw.githubusercontent.com/SujalPatil21/AASHA/main/screenshots/add-patient.png)
+
+Offline-first patient record entry with voice/text observations and automatic risk evaluation.
+
+---
+
+### Risk Monitoring Dashboard
+![Dashboard](https://raw.githubusercontent.com/SujalPatil21/AASHA/main/screenshots/dashboard.png)
+
+PHC dashboard showing structured health records and filtering by risk severity.
+
+---
+
+## Installation (Development Setup)
+
+### Prerequisites
+
+- Node.js 18+
+- Java 17+
+- Maven or Gradle
+- Python 3.10+
+- PostgreSQL 14+
+- Docker (optional for deployment)
+
+### Clone Repository
+
+```bash
+git clone https://github.com/your-username/AASHA.git
+cd AASHA
+```
+
+---
+
+## Repository Structure
+
+```
+AASHA/
+│
+├── frontend/       # Offline-first PWA
+├── backend/        # Spring Boot REST API
+├── ai-service/     # Python NLP + Risk Engine
+├── database/       # PostgreSQL schema & migrations
+├── docs/           # Architecture & requirements
+├── deployment/     # Docker & cloud configs
+└── README.md
+```
+
+---
+
+## Core Design Principles
+
+- Offline-first architecture
+- Rule-based risk assessment (not diagnosis)
+- Explainable AI outputs
+- Role-based access control
+- Secure data encryption
+- Rural device optimization
+- Zero data loss during sync
+
+---
+
+## Architecture
+
+AASHA follows a multi-service architecture:
+
+### Client Layer (PWA)
+
+- Progressive Web App
+- IndexedDB offline storage
+- Local rule engine
+- Sync manager
+- Language localization
+- Encrypted local storage
+
+### Backend Layer
+
+- REST API (Spring Boot)
+- Authentication service
+- Case management
+- Reporting engine
+- Centralized rule management
+
+### AI Service
+
+- Speech-to-text (offline when possible)
+- Entity extraction
+- Structured data mapping
+- Rule-based risk evaluation
+
+### Database
+
+- PostgreSQL
+- Structured health records
+- Case history tracking
+- Role-based access control
+
+---
+
+## Core Modules
+
+- Offline Data Capture
+- Structured Data Processor
+- Risk Assessment Engine
+- Synchronization Manager
+- Authentication Manager
+- Case Manager
+- Reporting Engine
+- Localization Module
+- Device Performance Optimizer
+
+Each module follows a single responsibility principle.
+
+---
+
+## Target Users
+
+- ASHA Workers
+- ANMs (Supervisors)
+- PHC Doctors
+- Health Administrators
+
+---
+
+## Role-Based Access
+
+### ASHA Worker
+- Capture health data offline
+- View patient history
+- Receive risk alerts
+- Track follow-ups
+
+### ANM
+- View structured records
+- Filter by risk level
+- Monitor ASHA performance
+- Escalate cases
+
+### PHC Doctor
+- View summarized patient data
+- Review high-risk cases
+- Generate reports
+
+### Administrator
+- Manage users and roles
+- Monitor system health
+- Generate audit logs
+
+---
+
+## Risk Flagging Model
+
+- Uses transparent, rule-based logic
+- Assigns severity: Low / Medium / High / Critical
+- Shows why a case was flagged
+- Does not diagnose or prescribe
+
+Example:
+
+- Late pregnancy + swelling → High Risk
+- Missed ANC visits → Medium Risk
+- Abnormal vitals → Critical
+
+---
+
+## Data Synchronization
+
+- Records marked as Pending / Synced / Failed
+- Auto-sync on connectivity restoration
+- Conflict resolution rules applied
+- No manual upload required
+- Retry logic implemented
+
+---
+
+## Security
+
+- AES-256 encryption for health data
+- Encrypted local storage
+- Encrypted data transmission
+- Role-based access control
+- Audit logging
+- No credentials stored in code
+
+---
+
+## Non-Functional Goals
+
+- App startup < 10 seconds
+- Sync completion < 5 minutes
+- Offline support for 30+ days
+- 99.5% uptime target
+- Works on Android 8+ with 2GB RAM
+
+---
+
+## Tech Stack
+
+### Frontend
+- React (PWA)
+- TypeScript
+- IndexedDB
+- Service Workers
+
+### Backend
+- Spring Boot (Java 17)
+- REST API
+- JWT Authentication
+
+### AI Service
+- Python
+- spaCy
+- Whisper (speech-to-text)
+- Rule-based engine
+
+### Database
+- PostgreSQL
+
+### Deployment
+- Docker
+- AWS-ready infrastructure
+
+---
+
+## Folder Structure Generated (Per Health Record)
+
+Each captured record contains:
+
+- Patient metadata
+- Structured health fields
+- Risk assessment results
+- Follow-up tasks
+- Sync status
+- Timestamp & sequence number
+
+---
+
+## Testing Strategy
+
+- Unit testing (core modules)
+- Property-based testing
+- Integration testing (offline → sync → dashboard)
+- Performance testing (low-resource devices)
+- Security validation
+
+Minimum:
+- 80% code coverage
+- 100% coverage for security-critical modules
+
+---
+
+## Scalability Vision
+
+- Multi-district deployment
+- State-level reporting
+- Modular health program addition
+- Future ML model integration
+- National rural healthcare integration
+
+---
+
+## Project Status
+
+- Architecture defined
+- Requirements finalized
+- Monorepo structure initialized
+- Ready for module-level development
+
+---
+
+## Authors
+
+- Shreya Awari – [Github](https://github.com/shreyaawari28)  
+- Sujal Patil – [Github](https://github.com/SujalPatil21)  
+- Tejas Halvankar – [Github](https://github.com/Tejas-H01)  
+- Nihal Mishra – [Github](https://github.com/NihalMishra3009)  
+
+---
+
+## License
+
+MIT License
+
+
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+# Benchmark Helper Scripts Workspace
+This directory contains automated execution hooks, parsing scripts, and cleanup helper scripts.
+
+
+# Benchmark Reports Workspace
+This directory contains output charts, metrics, and JSON execution reports.
+
+
+# Lighthouse Performance Benchmarks Workspace
+This directory contains lighthouse-ci configuration rules to validate audit budgets.
+
+
+# IndexedDB Performance Benchmarks Workspace
+This directory contains performance-timing runner scripts measuring IndexedDB read/write latencies and lookup optimizations.
+
+
+# Benchmark Datasets Workspace
+This directory contains deterministic sample data sets and seed definitions.
+
+
+
+
+## API Reference
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/generate` | Backend Endpoint |
+| GET | `/healthz` | Backend Endpoint |
+| POST | `/records` | Backend Endpoint |
+| GET | `/records` | Backend Endpoint |
+| GET | `/high-risk` | Backend Endpoint |
+| POST | `/sync` | Backend Endpoint |
+| DELETE | `/records/{id}` | Backend Endpoint |
+
+
+## Database Schema
+
+The following entities were extracted from the data model:
+
+- **HealthRecord**: `id, patientName, age, phone, patientType, rawText, language, riskLevel, createdAt, updatedAt, sourceDevice`
+
+
+## Project Structure
+
+```
+.gitignore
+backend/
+  .gitattributes
+  .gitignore
+  .mvn/
+    wrapper/
+  mvnw
+  mvnw.cmd
+  pom.xml
+  src/
+    main/
+    test/
+benchmarks/
+  datasets/
+    README.md
+  indexeddb/
+    benchmark-auto.html
+    benchmark.html
+    README.md
+  k6/
+    config/
+    create-record.js
+    get-records.js
+    mixed-workload.js
+    options.json
+    stress.js
+    sync.js
+    utils/
+  lighthouse/
+    README.md
+  reports/
+    api_stress_test_results.json
+    consolidated_k6_all_runs.json
+    consolidated_rest_summary_1782455647856.json
+    indexeddb_benchmark_results_1782457408632.csv
+    indexeddb_benchmark_results_1782457408632.json
+    k6_create-record_scale_100_run1_1782454435210.json
+    k6_create-record_scale_100_run2_1782454449693.json
+    k6_create-record_scale_100_run3_1782454464375.json
+    k6_create-record_scale_10_run1_1782454056867.json
+    k6_create-record_scale_10_run2_1782454071374.json
+    k6_create-record_scale_10_run3_1782454086226.json
+    k6_create-record_scale_250_run1_1782454684556.json
+    k6_create-record_scale_250_run2_1782454704282.json
+    k6_create-record_scale_250_run3_1782454723692.json
+    k6_create-record_scale_500_run1_1782455059097.json
+    k6_create-record_scale_500_run2_1782455097588.json
+    k6_create-record_scale_500_run3_1782455134306.json
+    k6_create-record_scale_50_run1_1782454260872.json
+    k6_create-record_scale_50_run2_1782454275386.json
+    k6_create-record_scale_50_run3_1782454289855.json
+    k6_get-records_scale_100_run1_1782454391139.json
+    k6_get-records_scale_100_run2_1782454406066.json
+    k6_get-records_scale_100_run3_1782454420606.json
+    k6_get-records_scale_10_run1_1782454010714.json
+    k6_get-records_scale_10_run2_1782454025299.json
+    k6_get-records_scale_10_run3_1782454042386.json
+    k6_get-records_scale_250_run1_1782454566150.json
+    k6_get-records_scale_250_run2_1782454605932.json
+    k6_get-records_scale_250_run3_1782454644713.json
+    k6_get-records_scale_500_run1_1782454918168.json
+    k6_get-records_scale_500_run2_1782454963225.json
+    k6_get-records_scale_500_run3_1782455012216.json
+    k6_get-records_scale_50_run1_1782454218333.json
+    k6_get-records_scale_50_run2_1782454232462.json
+    k6_get-records_scale_50_run3_1782454246608.json
+    k6_mixed-workload_scale_100_run1_1782453799938.json
+    k6_mixed-workload_scale_100_run1_1782454522954.json
+    k6_mixed-workload_scale_100_run2_1782453814128.json
+    k6_mixed-workload_scale_100_run2_1782454537216.json
+    k6_mixed-workload_scale_100_run3_1782453828315.json
+    k6_mixed-workload_scale_100_run3_1782454551661.json
+    k6_mixed-workload_scale_10_run1_1782453597609.json
+    k6_mixed-workload_scale_10_run1_1782454145636.json
+    k6_mixed-workload_scale_10_run2_1782453614698.json
+    k6_mixed-workload_scale_10_run2_1782454160488.json
+    k6_mixed-workload_scale_10_run3_1782453630509.json
+    k6_mixed-workload_scale_10_run3_1782454174963.json
+    k6_mixed-workload_scale_10_run5_1782454189506.json
+    k6_mixed-workload_scale_10_run6_1782454203935.json
+    k6_mixed-workload_scale_250_run1_1782454802682.json
+    k6_mixed-workload_scale_250_run2_1782454840373.json
+    k6_mixed-workload_scale_250_run3_1782454879419.json
+    k6_mixed-workload_scale_500_run1_1782455234402.json
+    k6_mixed-workload_scale_500_run2_1782455280182.json
+    k6_mixed-workload_scale_500_run3_1782455328987.json
+    k6_mixed-workload_scale_50_run1_1782453645117.json
+    k6_mixed-workload_scale_50_run1_1782453727390.json
+    k6_mixed-workload_scale_50_run1_1782454348343.json
+    k6_mixed-workload_scale_50_run2_1782453659594.json
+    k6_mixed-workload_scale_50_run2_1782453741880.json
+    k6_mixed-workload_scale_50_run2_1782454362504.json
+    k6_mixed-workload_scale_50_run3_1782453674075.json
+    k6_mixed-workload_scale_50_run3_1782453756409.json
+    k6_mixed-workload_scale_50_run3_1782454376991.json
+    k6_mixed-workload_scale_50_run5_1782453771007.json
+    k6_mixed-workload_scale_50_run6_1782453785760.json
+    k6_stress_stress_profile_run1_1782455377875.json
+    k6_stress_stress_profile_run2_1782455443016.json
+    k6_stress_stress_profile_run3_1782455491645.json
+    k6_stress_stress_profile_run5_1782455555065.json
+    k6_stress_stress_profile_run6_1782455601016.json
+    k6_sync_scale_100_run1_1782454478855.json
+    k6_sync_scale_100_run2_1782454493473.json
+    k6_sync_scale_100_run3_1782454508414.json
+    k6_sync_scale_10_run1_1782454100897.json
+    k6_sync_scale_10_run2_1782454115317.json
+    k6_sync_scale_10_run3_1782454130735.json
+    k6_sync_scale_250_run1_1782454743502.json
+    k6_sync_scale_250_run2_1782454763215.json
+    k6_sync_scale_250_run3_1782454782942.json
+    k6_sync_scale_500_run1_1782455171161.json
+    k6_sync_scale_500_run2_1782455191947.json
+    k6_sync_scale_500_run3_1782455213204.json
+    k6_sync_scale_50_run1_1782454304486.json
+    k6_sync_scale_50_run2_1782454318997.json
+    k6_sync_scale_50_run3_1782454333652.json
+    lighthouse_report_1782455924118.html
+    lighthouse_report_1782455924118.json
+    mixed_workload_scale_100_results.json
+    mixed_workload_scale_10_results.json
+    mixed_workload_scale_250_results.json
+    mixed_workload_scale_50_results.json
+    prometheus_metrics_snapshot.txt
+    README.md
+    summary_create-record_scale_100_1782454478855.json
+    summary_create-record_scale_10_1782454100896.json
+    summary_create-record_scale_250_1782454743501.json
+    summary_create-record_scale_50_1782454304485.json
+    summary_get-records_scale_10_1782454056867.json
+    summary_mixed-workload_scale_10_1782453645116.json
+    summary_mixed-workload_scale_10_1782454218332.json
+    summary_mixed-workload_scale_50_1782453688537.json
+    summary_mixed-workload_scale_50_1782453799938.json
+    summary_mixed-workload_scale_50_1782454391138.json
+    summary_stress_stress_profile_1782455647855.json
+    summary_sync_scale_100_1782454522953.json
+    summary_sync_scale_10_1782454145635.json
+    summary_sync_scale_50_1782454348340.json
+    sync_benchmark_1000_records_1782392440288.json
+    sync_benchmark_1000_records_1782455741347.json
+    sync_benchmark_100_records_1782392433021.json
+    sync_benchmark_100_records_1782455664452.json
+    sync_benchmark_5000_records_1782455921101.json
+    sync_benchmark_500_records_1782392436482.json
+    sync_benchmark_500_records_1782455702350.json
+  scripts/
+    orchestrate-benchmarks.js
+    package-lock.json
+    package.json
+    parse-raw-k6.js
+    README.md
+    run-all-benchmarks.ps1
+    run-idb-bench.js
+    seed-production-db.js
+    sync-bench.js
+doc/
+  AASHA_Interview_Cheat_Sheet.html
+  AASHA_Interview_Cheat_Sheet.pdf
+  PWA_Interview_Learning_Guide.pdf
+  PWA_Offline_First_Interview_Guide.pdf
+frontend/
+  .gitignore
+  eslint.config.js
+  index.html
+  package-lock.json
+  package.json
+  public/
+    aasha-icon.svg
+    pwa-192x192.png
+    pwa-512x512.png
+    _headers
+    _redirects
+  README.md
+  scripts/
+    generate-icons.js
+    generate-icons.mjs
+  src/
+    App.css
+    App.jsx
+    assets/
+    components/
+    index.css
+    indexeddb/
+    main.jsx
+    pages/
+    repository/
+    sync/
+    utils/
+  vite.config.js
+LICENSE
+package-lock.json
+README.md
+screenshots/
+  dashboard.png
+
+```
+
+
+## Additional Visuals
+
+![pwa-192x192.png](https://raw.githubusercontent.com/SujalPatil21/AASHA/main/frontend/public/pwa-192x192.png)
+
+![pwa-512x512.png](https://raw.githubusercontent.com/SujalPatil21/AASHA/main/frontend/public/pwa-512x512.png)
+
+![mic.png](https://raw.githubusercontent.com/SujalPatil21/AASHA/main/frontend/src/assets/mic.png)
+

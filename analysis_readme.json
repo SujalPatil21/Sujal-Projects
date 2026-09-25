@@ -1,0 +1,108 @@
+[
+  {
+    "repo": "Geo-Watch",
+    "tech": [
+      "React",
+      "Spring Boot",
+      "PostgreSQL",
+      "TypeScript"
+    ],
+    "hasReadme": true
+  },
+  {
+    "repo": "AASHA",
+    "tech": [
+      "Node.js",
+      "Spring Boot",
+      "PostgreSQL",
+      "Python",
+      "Java",
+      "Docker"
+    ],
+    "hasReadme": true
+  },
+  {
+    "repo": "WardWatch",
+    "tech": [
+      "React",
+      "Spring Boot",
+      "PostgreSQL"
+    ],
+    "hasReadme": true
+  },
+  {
+    "repo": "Globe-Trotter",
+    "tech": [],
+    "hasReadme": true
+  },
+  {
+    "repo": "Mind-Meal",
+    "tech": [
+      "Python",
+      "FastAPI"
+    ],
+    "hasReadme": true
+  },
+  {
+    "repo": "StaySplit",
+    "tech": [
+      "Spring Boot",
+      "Java",
+      "Docker"
+    ],
+    "hasReadme": true
+  },
+  {
+    "repo": "DISPATCHOPS",
+    "tech": [
+      "React",
+      "Express.js",
+      "Node.js",
+      "Spring Boot",
+      "TypeScript",
+      "Java",
+      "AWS",
+      "OptaPlanner",
+      "GraphHopper"
+    ],
+    "hasReadme": true
+  },
+  {
+    "repo": "Drill-Insight",
+    "tech": [
+      "React",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "Python",
+      "FastAPI",
+      "TypeScript"
+    ],
+    "hasReadme": true
+  },
+  {
+    "repo": "Mob-Alert",
+    "tech": [
+      "React",
+      "Spring Boot",
+      "PostgreSQL",
+      "Gemini AI",
+      "TypeScript"
+    ],
+    "hasReadme": true
+  },
+  {
+    "repo": "GitGo",
+    "tech": [
+      "Node.js",
+      "TypeScript"
+    ],
+    "hasReadme": true
+  },
+  {
+    "repo": "Arch-Flow",
+    "tech": [
+      "React"
+    ],
+    "hasReadme": true
+  }
+]

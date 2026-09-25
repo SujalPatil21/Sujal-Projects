@@ -1,0 +1,345 @@
+--- REPOSITORY: Arch-Flow ---
+
+--- DIRECTORY STRUCTURE ---
+.env
+1.png
+2.png
+3.png
+backend-dev2/
+  .gitignore
+  package-lock.json
+  package.json
+  scratch/
+    test_ai_validation.js
+    verify_api.js
+    verify_groq.js
+  src/
+    ai/
+      openaiService.ts
+      queryHandler.ts
+    api/
+      routes.ts
+      server.ts
+    graph/
+      deadFileDetector.ts
+      entryDetector.ts
+      graphBuilder.ts
+      layerDetector.ts
+      layoutEngine.ts
+    ingestion/
+      orchestrator.ts
+      repoIngestion.ts
+    intelligence/
+      priorityEngine.ts
+      semanticAnalyzer.ts
+    services/
+      groqService.ts
+    test-cases.ts
+    types/
+      graphTypes.ts
+    utils/
+      deepFreeze.ts
+      normalizer.ts
+      tokenizer.ts
+      validator.ts
+    views/
+      viewBuilder.ts
+  tsconfig.json
+cloneRepo.js
+Frontend/
+  eslint.config.js
+  index.html
+  package-lock.json
+  package.json
+  postcss.config.js
+  public/
+    vite.svg
+  README.md
+  src/
+    AnalysisPage.jsx
+    App.jsx
+    assets/
+      react.svg
+    components/
+      ArchNode.jsx
+      CityNode.jsx
+      FileNode.jsx
+      FolderNode.jsx
+    data/
+      mockAnalysis.js
+    HomePage.jsx
+    index.css
+    main.jsx
+    pages/
+      landing/
+    services/
+      api.js
+    utils/
+      dagreLayout.js
+      forceLayout.js
+      graph/
+      radialLayout.js
+      treeLayout.js
+  tailwind.config.js
+  vite.config.js
+index.js
+ingestionService.js
+LICENSE
+output.json
+package-lock.json
+package.json
+readFiles.js
+README.md
+
+
+--- FILE: backend-dev2\package.json ---
+{
+  "name": "backend-dev2",
+  "version": "1.0.0",
+  "description": "Repository Architecture Analyzer Backend",
+  "main": "dist/api/server.js",
+  "scripts": {
+    "dev": "nodemon src/api/server.ts",
+    "start": "node dist/api/server.js",
+    "build": "tsc",
+    "test": "ts-node src/test-cases.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dagre": "^0.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.18.2",
+    "graphlib": "^2.1.8",
+    "groq-sdk": "^1.1.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/dagre": "^0.7.54",
+    "@types/express": "^4.17.21",
+    "@types/graphlib": "^2.1.12",
+    "@types/node": "^20.10.0",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  }
+}
+
+
+--- FILE: Frontend\package.json ---
+{
+  "name": "codebase-gps",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@dagrejs/dagre": "^3.0.0",
+    "axios": "^1.15.0",
+    "d3-binarytree": "^1.0.2",
+    "d3-dispatch": "^3.0.1",
+    "d3-force": "^3.0.0",
+    "d3-hierarchy": "^3.1.2",
+    "d3-quadtree": "^3.0.1",
+    "d3-timer": "^3.0.1",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.8.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.14.1",
+    "reactflow": "^11.11.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.5.0",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.11.0",
+    "postcss": "^8.5.10",
+    "tailwindcss": "^3.4.19",
+    "vite": "^5.4.10"
+  }
+}
+
+
+--- FILE: Frontend\README.md ---
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
+--- FILE: package.json ---
+{
+  "name": "ingestion_layer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "fs-extra": "^11.3.4",
+    "simple-git": "^3.36.0"
+  }
+}
+
+
+--- FILE: README.md ---
+# Archflow — Codebase Architecture Explorer
+
+Archflow is an AI-powered codebase visualization tool that transforms any GitHub repository into an interactive architecture graph. It helps developers quickly understand project structure, dependencies, and critical components without manually reading the entire codebase.
+
+---
+
+## Overview
+
+Archflow analyzes a repository and builds a structured graph where:
+
+- Nodes represent files or modules 
+- Edges represent dependencies and relationships
+- Priority and impact are visually encoded
+- AI provides contextual explanations and insights
+
+This enables fast onboarding, debugging, and architectural understanding.
+
+---
+
+## Key Features
+
+### Architecture Graph Visualization
+- Interactive graph built using dependency analysis
+- Automatic layout with clustered relationships
+- Visual hierarchy based on importance and connectivity
+
+### Intelligent Node Classification
+- Nodes categorized into:
+  - High Priority (Core logic)
+  - Medium Priority (Supporting modules)
+  - Low Priority (Utility or isolated files)
+- Special handling for configuration files like `package.json`
+
+### AI-Powered Insights (Groq Integration)
+- Natural language queries over the codebase
+- Context-aware explanations of files and modules
+- System overview generation using repository structure
+
+### Dependency Mapping
+- Import/export analysis across files
+- Identification of entry points and critical flows
+- Graph-based representation of system architecture
+
+### Resilient Backend Pipeline
+- GitHub API ingestion
+- Graph building and pruning logic
+- Fallback mechanisms for missing files (e.g., package.json injection)
+
+---
+
+## Screenshots
+
+### Homepage
+![Homepage](1.png)
+
+### Architecture Graph
+![Graph](2.png)
+
+### Node Analysis Panel
+![Node Analysis](3.png)
+
+---
+
+## System Architecture
+
+### Backend
+- Repository ingestion using GitHub API
+- Graph construction and normalization
+- Priority scoring engine
+- Groq AI integration with:
+  - Rate limiting
+  - Caching
+  - Fallback logic
+
+### Frontend
+- React-based UI
+- Graph rendering with interactive nodes
+- AI assistant panel
+- Real-time query handling via backend API
+
+---
+
+## AI Integration Strategy
+
+- Groq is used as an enhancement layer, not a dependency
+- Strict governance:
+  - Rate limiting
+  - Session and daily quotas
+  - Response validation
+  - Timeout control
+
+If AI fails or is restricted, deterministic logic ensures system stability.
+
+---
+
+## Core Design Principles
+
+- Deterministic fallback first, AI enhancement second
+- Zero UI-side intelligence — backend is the source of truth
+- Isolation of features to prevent cross-impact
+- Performance-aware graph pruning and prioritization
+
+---
+
+## Use Cases
+
+- Understanding unfamiliar repositories
+- Debugging complex dependency chains
+- Identifying critical modules quickly
+- Preparing for interviews and code reviews
+- Visualizing architecture for documentation
+
+---
+
+## Future Enhancements
+
+- Multi-repository comparison
+- Monorepo-aware visualization
+- Advanced clustering and grouping
+- Persistent graph storage
+- Team collaboration features
+
+---
+
+## Author
+
+Sujal Patil
+
+
+--- IMAGES DISCOVERED ---
+1.png
+2.png
+3.png
+backend-dev2\package.json
+Frontend\package.json
+Frontend\public\vite.svg
+Frontend\src\assets\react.svg
+Frontend\src\pages\landing\assets\react.svg
+package.json
+
