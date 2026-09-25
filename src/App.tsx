@@ -4,14 +4,13 @@ import './index.css';
 
 const Home = () => {
   const webApps = projects.filter(p => p.category === 'Web Apps');
-  const aiProjects = projects.filter(p => p.category === 'Data Science & AI');
+  const aiProjects = projects.filter(p => p.category === 'AI / Intelligent Projects');
   const devTools = projects.filter(p => p.category === 'Developer Tools');
 
   return (
     <div className="max-w-[1100px] mx-auto py-12 px-6 bg-white min-h-screen text-gray-900 font-sans">
       <header className="mb-12">
-        <h1 className="text-3xl font-semibold mb-2">Projects</h1>
-        <p className="text-gray-600 text-sm">A collection of software engineering projects, systems, developer tools, and technical experiments.</p>
+        <h1 className="text-3xl font-semibold">Projects</h1>
       </header>
 
       <section className="mb-12">
@@ -23,7 +22,7 @@ const Home = () => {
                 <th className="py-3 px-4 font-medium w-48">Project</th>
                 <th className="py-3 px-4 font-medium w-48">Frontend</th>
                 <th className="py-3 px-4 font-medium w-48">Backend</th>
-                <th className="py-3 px-4 font-medium w-24">Live</th>
+                <th className="py-3 px-4 font-medium w-24">Live / Docs</th>
                 <th className="py-3 px-4 font-medium min-w-[300px] whitespace-normal">Description</th>
               </tr>
             </thead>
@@ -37,7 +36,9 @@ const Home = () => {
                   <td className="py-3 px-4 text-gray-600">{p.stack.backend.join(', ') || '-'}</td>
                   <td className="py-3 px-4">
                     {p.live ? (
-                      <a href={p.live} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">live</a>
+                      <a href={p.live} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        live
+                      </a>
                     ) : p.docs ? (
                       <Link to={p.docs} className="text-blue-600 hover:underline">docs</Link>
                     ) : '-'}
@@ -58,7 +59,7 @@ const Home = () => {
               <tr className="border-b border-gray-200 bg-gray-50 text-gray-600">
                 <th className="py-3 px-4 font-medium w-48">Project</th>
                 <th className="py-3 px-4 font-medium w-64">Stack</th>
-                <th className="py-3 px-4 font-medium w-24">Live</th>
+                <th className="py-3 px-4 font-medium w-24">Live / Docs</th>
                 <th className="py-3 px-4 font-medium min-w-[300px] whitespace-normal">Description</th>
               </tr>
             </thead>
@@ -71,7 +72,9 @@ const Home = () => {
                   <td className="py-3 px-4 text-gray-600">{[...p.stack.frontend, ...p.stack.backend, ...p.stack.database, ...p.stack.infrastructure].join(', ') || '-'}</td>
                   <td className="py-3 px-4">
                     {p.live ? (
-                      <a href={p.live} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">live</a>
+                      <a href={p.live} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        live
+                      </a>
                     ) : p.docs ? (
                       <Link to={p.docs} className="text-blue-600 hover:underline">docs</Link>
                     ) : '-'}
@@ -92,7 +95,7 @@ const Home = () => {
               <tr className="border-b border-gray-200 bg-gray-50 text-gray-600">
                 <th className="py-3 px-4 font-medium w-48">Project</th>
                 <th className="py-3 px-4 font-medium w-64">Stack</th>
-                <th className="py-3 px-4 font-medium w-24">Live</th>
+                <th className="py-3 px-4 font-medium w-24">Live / Docs</th>
                 <th className="py-3 px-4 font-medium min-w-[300px] whitespace-normal">Description</th>
               </tr>
             </thead>
@@ -105,7 +108,9 @@ const Home = () => {
                   <td className="py-3 px-4 text-gray-600">{[...p.stack.frontend, ...p.stack.backend, ...p.stack.database, ...p.stack.infrastructure].join(', ') || '-'}</td>
                   <td className="py-3 px-4">
                     {p.live ? (
-                      <a href={p.live} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">live</a>
+                      <a href={p.live} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        live
+                      </a>
                     ) : p.docs ? (
                       <Link to={p.docs} className="text-blue-600 hover:underline">docs</Link>
                     ) : '-'}
@@ -143,7 +148,9 @@ const ProjectPage = () => {
             <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">GitHub</a>
           )}
           {project.live && (
-            <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Live</a>
+            <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+              Live
+            </a>
           )}
         </div>
 
@@ -270,7 +277,8 @@ const ProjectPage = () => {
         <h2 className="text-xl font-semibold mb-4">Links</h2>
         <ul className="list-disc list-inside text-gray-700">
           {project.github && <li><a href={project.github} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">GitHub</a></li>}
-          {project.live && <li><a href={project.live} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Live</a></li>}
+          {project.live && (<li><a href={project.live} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Live</a></li>)}
+          {project.marketplace && <li><a href={project.marketplace} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Visual Studio Marketplace</a></li>}
         </ul>
       </section>
     </div>

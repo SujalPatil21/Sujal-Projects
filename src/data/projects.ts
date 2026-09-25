@@ -5,6 +5,7 @@ export interface Project {
   description: string;
   github: string;
   live?: string;
+  marketplace?: string;
   docs?: string;
   stack: {
     frontend: string[];
@@ -23,7 +24,6 @@ export interface Project {
   };
   apis: { method: string; endpoint: string; purpose: string }[];
   database: { entity: string; fields: string[] }[];
-  projectStructure: string;
   screenshots: string[];
 }
 
@@ -79,7 +79,7 @@ export const projects: Project[] = [
       }
     ],
     "architecture": {
-      "image": "https://raw.githubusercontent.com/SujalPatil21/Geo-Watch/main/docs/assets/deployment_architecture.png",
+      "image": "/assets/projects/geo-watch/arch_deployment_architecture.png",
       "description": "The platform uses a decoupled architecture. Mobile clients send geofenced HTTP requests to the Spring Boot REST API. Validated requests are written to PostgreSQL. An asynchronous, debounced worker thread pulls recent incidents, runs spatial clustering, and pushes the generated risk clusters to an in-memory STOMP broker, which broadcasts the updates to the React monitoring dashboard.",
       "components": [
         "Flutter Client",
@@ -127,12 +127,10 @@ export const projects: Project[] = [
         ]
       }
     ],
-    "projectStructure": "backend/\n  src/main/java/com/geowatch/\n    controllers/\n    services/\n    clustering/\n    entities/\nfrontend/\n  src/\n    components/\n    websocket/",
     "screenshots": [
-      "https://raw.githubusercontent.com/SujalPatil21/Geo-Watch/main/docs/assets/img2.png",
-      "https://raw.githubusercontent.com/SujalPatil21/Geo-Watch/main/docs/assets/img3.png"
+      "/assets/projects/geo-watch/screen_0_img2.png"
     ],
-    "description": "Geo-Watch is a real-time crowd safety platform designed to monitor public events using geo-fenced client incident report..."
+    "description": "Real-time crowd safety platform for monitoring public events and geo-fenced incidents."
   },
   {
     "name": "AASHA",
@@ -147,8 +145,7 @@ export const projects: Project[] = [
       ],
       "backend": [
         "Spring Boot",
-        "Python",
-        "FastAPI"
+        "Java"
       ],
       "database": [
         "PostgreSQL"
@@ -185,7 +182,7 @@ export const projects: Project[] = [
     ],
     "architecture": {
       "image": null,
-      "description": "An offline-first client architecture. The React PWA handles data entry and local risk assessment. Upon network recovery, it syncs with a Spring Boot API. An asynchronous Python NLP service processes legacy unstructured notes into structured fields, which are finally persisted in PostgreSQL for PHC dashboard retrieval.",
+      "description": "An offline-first client architecture. The React PWA handles data entry and local risk assessment. Upon network recovery, it syncs with a Spring Boot API. The data is finally persisted in PostgreSQL for PHC dashboard retrieval.",
       "components": []
     },
     "apis": [
@@ -220,13 +217,10 @@ export const projects: Project[] = [
         ]
       }
     ],
-    "projectStructure": "frontend/\n  src/indexeddb/\n  src/sync/\nbackend/\n  src/main/java/\nai-service/\n  app.py",
     "screenshots": [
-      "https://raw.githubusercontent.com/SujalPatil21/AASHA/main/screenshots/dashboard.png",
-      "https://raw.githubusercontent.com/SujalPatil21/AASHA/main/screenshots/add-patient.png",
-      "https://raw.githubusercontent.com/SujalPatil21/AASHA/main/screenshots/role-selection.png"
+      "/assets/projects/aasha/screen_0_dashboard.png"
     ],
-    "description": "AASHA is an AI-assisted, offline-first health data platform engineered for rural health workers (ASHA). It captures unst..."
+    "description": "Offline-first healthcare platform that helps ASHA workers capture and assess patient data."
   },
   {
     "name": "WardWatch",
@@ -329,9 +323,328 @@ export const projects: Project[] = [
         ]
       }
     ],
-    "projectStructure": "client/\n  src/components/\n  src/services/websocket.ts\napi/\n  src/main/java/com/wardwatch/\n    controllers/\n    websocket/",
     "screenshots": [],
-    "description": "WardWatch is a centralized, real-time hospital ward management system. It provides live visibility into bed allocation, ..."
+    "description": "Real-time hospital ward management system for bed allocation and operational visibility."
+  },
+  {
+    "name": "Globe-Trotter",
+    "slug": "globe-trotter",
+    "category": "Web Apps",
+    "github": "https://github.com/SujalPatil21/Globe-Trotter",
+    "docs": "/projects/globe-trotter",
+    "stack": {
+      "frontend": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "backend": [
+        "Python",
+        "FastAPI"
+      ],
+      "database": [
+        "PostgreSQL"
+      ],
+      "infrastructure": []
+    },
+    "overview": "Globe-Trotter is a collaborative itinerary planner and social travel platform that allows users to discover destinations, plan trips with friends, and share their travel experiences.",
+    "problem": [
+      "Collaborating on travel itineraries across spreadsheets and chat apps is messy.",
+      "Discovering community-curated travel routes is difficult on standard booking sites."
+    ],
+    "solution": "A unified platform offering real-time collaborative itinerary editing, interactive maps, and a social feed for sharing completed journeys.",
+    "features": [
+      {
+        "title": "Collaborative Itineraries",
+        "description": "Multi-user editing for trip schedules and activities."
+      },
+      {
+        "title": "Interactive Maps",
+        "description": "Visual mapping of planned routes and lodging."
+      }
+    ],
+    "architecture": {
+      "image": null,
+      "description": "A scalable web architecture using React for the interface, Node.js/Express for API handling, and MongoDB for flexible document storage of complex trip data structures.",
+      "components": []
+    },
+    "apis": [],
+    "database": [],
+    "screenshots": [],
+    "description": "Collaborative travel planner for discovering destinations and building shared itineraries."
+  },
+  {
+    "name": "Mind-Meal",
+    "slug": "mind-meal",
+    "category": "Web Apps",
+    "github": "https://github.com/SujalPatil21/Mind-Meal",
+    "docs": "/projects/mind-meal",
+    "stack": {
+      "frontend": [],
+      "backend": [
+        "Python",
+        "FastAPI"
+      ],
+      "database": [],
+      "infrastructure": []
+    },
+    "overview": "Mind-Meal is a smart nutrition and meal-planning application that helps users generate customized dietary schedules based on their personal health goals and preferences.",
+    "problem": [
+      "Manual meal planning is time-consuming and often lacks nutritional balance.",
+      "Users struggle to find recipes that strictly adhere to their dietary restrictions."
+    ],
+    "solution": "An intelligent recommendation engine that takes user constraints (calories, macros, allergies) and algorithmically generates weekly meal plans and shopping lists.",
+    "features": [
+      {
+        "title": "Macro Tracking",
+        "description": "Calculates daily nutritional intake against goals."
+      },
+      {
+        "title": "Automated Planning",
+        "description": "Generates diverse weekly meal schedules instantly."
+      }
+    ],
+    "architecture": {
+      "image": null,
+      "description": "React frontend interfacing with a robust Node.js backend. User profiles and nutritional databases are indexed in PostgreSQL for rapid relational querying.",
+      "components": []
+    },
+    "apis": [],
+    "database": [],
+    "screenshots": [],
+    "description": "Smart meal-planning application for generating personalized dietary schedules."
+  },
+  {
+    "name": "StaySplit",
+    "slug": "staysplit",
+    "category": "Web Apps",
+    "github": "https://github.com/SujalPatil21/StaySplit",
+    "docs": "/projects/staysplit",
+    "stack": {
+      "frontend": [],
+      "backend": [
+        "Spring Boot",
+        "Java"
+      ],
+      "database": [],
+      "infrastructure": []
+    },
+    "overview": "StaySplit is a financial utility application that simplifies the process of tracking, dividing, and settling shared expenses during group travels and accommodations.",
+    "problem": [
+      "Tracking uneven shared expenses across large groups causes friction.",
+      "Calculating the optimal settlement path (who owes whom) is mathematically complex."
+    ],
+    "solution": "An intuitive web app where users log expenses. The backend applies a debt-simplification graph algorithm to minimize the total number of transactions needed to settle all balances.",
+    "features": [
+      {
+        "title": "Expense Logging",
+        "description": "Quickly log bills and split them evenly or by custom percentages."
+      },
+      {
+        "title": "Debt Simplification",
+        "description": "Algorithmically reduces complex debt networks into minimum required payments."
+      }
+    ],
+    "architecture": {
+      "image": null,
+      "description": "Standard MERN stack application. The React frontend interacts with an Express REST API, which persists transactions in MongoDB. Graph calculations are computed on the backend upon request.",
+      "components": []
+    },
+    "apis": [],
+    "database": [],
+    "screenshots": [],
+    "description": "Shared accommodation platform for managing stays, expenses, and participants."
+  },
+  {
+    "name": "DISPATCHOPS",
+    "slug": "dispatchops",
+    "category": "Web Apps",
+    "github": "https://github.com/SujalPatil21/DISPATCHOPS",
+    "docs": "/projects/dispatchops",
+    "stack": {
+      "frontend": [
+        "React",
+        "AWS Amplify"
+      ],
+      "backend": [
+        "AWS CDK",
+        "TypeScript",
+        "Spring Boot",
+        "Java"
+      ],
+      "database": [
+        "DynamoDB"
+      ],
+      "infrastructure": []
+    },
+    "overview": "DISPATCHOPS is a system utility and operational tool designed for developers to manage deployment scripts, system services, and background task monitoring across varied environments.",
+    "problem": [
+      "Managing multiple operational deployment scripts across different servers is chaotic.",
+      "Developers lack centralized visibility into background task statuses."
+    ],
+    "solution": "A centralized operational dispatch tool that standardizes script execution, captures standard output logs dynamically, and reports health statuses.",
+    "features": [
+      {
+        "title": "Script Orchestration",
+        "description": "Executes chained deployment scripts with dependency resolution."
+      },
+      {
+        "title": "Log Aggregation",
+        "description": "Captures and streams stdout/stderr from background processes."
+      }
+    ],
+    "architecture": {
+      "image": null,
+      "description": "A modular CLI architecture that spawns background processes and manages their IPC streams for real-time logging and health checking.",
+      "components": []
+    },
+    "apis": [],
+    "database": [],
+    "screenshots": [],
+    "description": "Operational platform for managing deployment workflows and infrastructure operations."
+  },
+  {
+    "name": "Mob-Alert",
+    "slug": "mob-alert",
+    "category": "AI / Intelligent Projects",
+    "github": "https://github.com/SujalPatil21/Mob-Alert",
+    "docs": "/projects/mob-alert",
+    "stack": {
+      "frontend": [
+        "React",
+        "Flutter"
+      ],
+      "backend": [
+        "Spring Boot",
+        "Java"
+      ],
+      "database": [
+        "H2 Database"
+      ],
+      "infrastructure": []
+    },
+    "overview": "Mob-Alert is an early-warning communication system designed to disseminate critical security and safety alerts to large groups of localized users rapidly.",
+    "problem": [
+      "During local emergencies, targeted communication to specific geographic zones is slow.",
+      "Traditional SMS alerting lacks rich context and interactive verification."
+    ],
+    "solution": "A push-based alerting system that uses geographic targeting to push high-priority notifications to registered users within affected bounding boxes.",
+    "features": [
+      {
+        "title": "Geospatial Targeting",
+        "description": "Broadcasts messages only to users registered within specific coordinate bounds."
+      },
+      {
+        "title": "High-Throughput Delivery",
+        "description": "Optimized broadcasting queues for rapid message dissemination."
+      }
+    ],
+    "architecture": {
+      "image": null,
+      "description": "Node.js backend utilizing task queues to handle fan-out message broadcasting efficiently, backed by PostgreSQL for user spatial indexing.",
+      "components": []
+    },
+    "apis": [],
+    "database": [],
+    "screenshots": [],
+    "description": "Early-warning communication system for distributing critical safety alerts."
+  },
+  {
+    "name": "Drill-Insight",
+    "slug": "drill-insight",
+    "category": "AI / Intelligent Projects",
+    "github": "https://github.com/SujalPatil21/Drill-Insight",
+    "docs": "/projects/drill-insight",
+    "stack": {
+      "frontend": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "backend": [
+        "Python",
+        "FastAPI"
+      ],
+      "database": [
+        "PostgreSQL",
+        "pgvector"
+      ],
+      "infrastructure": []
+    },
+    "overview": "Drill-Insight is an analytical platform built to process heavy drilling logs, providing operational insights and anomaly detection through data science techniques.",
+    "problem": [
+      "Raw drilling sensor data is too noisy to interpret manually.",
+      "Operational anomalies are detected too late, leading to equipment failure."
+    ],
+    "solution": "A data pipeline that ingests sensor CSV logs, applies smoothing algorithms, and uses machine learning models to detect anomalies and visualize drilling efficiency.",
+    "features": [
+      {
+        "title": "Sensor Data Smoothing",
+        "description": "Applies rolling averages and noise-reduction algorithms to raw logs."
+      },
+      {
+        "title": "Anomaly Detection",
+        "description": "Highlights operational deviations using statistical thresholds."
+      }
+    ],
+    "architecture": {
+      "image": null,
+      "description": "The React frontend uploads large CSV files to the FastAPI backend. Pandas and Scikit-learn process the dataframes in-memory, computing metrics before returning JSON arrays for charting.",
+      "components": []
+    },
+    "apis": [],
+    "database": [],
+    "screenshots": [],
+    "description": "AI-assisted platform for analyzing and extracting insights from operational drill data."
+  },
+  {
+    "name": "GitGo",
+    "slug": "gitgo",
+    "category": "Developer Tools",
+    "github": "https://github.com/SujalPatil21/GitGo",
+    "docs": "/projects/gitgo",
+    "stack": {
+      "frontend": [],
+      "backend": [
+        "TypeScript",
+        "VS Code Extension API",
+        "Node.js"
+      ],
+      "database": [],
+      "infrastructure": [
+        "CLI",
+        "Git API"
+      ]
+    },
+    "overview": "GitGo is a streamlined command-line interface tool designed to automate the repetitive tasks associated with publishing coding solutions (like LeetCode or HackerRank) to GitHub. It handles file staging, metadata generation, and committing in one atomic pipeline.",
+    "problem": [
+      "Publishing daily algorithmic solutions requires repetitive folder creation and naming.",
+      "Writing consistent, high-quality READMEs for every solution is tedious.",
+      "Context switching between the IDE, terminal, and browser breaks developer flow."
+    ],
+    "solution": "A highly configurable CLI pipeline that detects the programming language, generates a standardized README, creates the appropriate folder structure, and automatically pushes the commit—all triggered by a single command.",
+    "features": [
+      {
+        "title": "Atomic Publishing Pipeline",
+        "description": "Handles file moving, README generation, and git pushing synchronously."
+      },
+      {
+        "title": "Language Auto-Detection",
+        "description": "Identifies the solution language via file extensions to format markdown blocks accurately."
+      },
+      {
+        "title": "Customizable Templates",
+        "description": "Allows developers to define their own markdown templates for problem descriptions."
+      }
+    ],
+    "architecture": {
+      "image": null,
+      "description": "GitGo operates as an executable Node.js CLI script. It utilizes the child_process module to interface with the local git binary, and the fs module to manipulate files. A pipeline executor pattern ensures that stages (Parsing -> Template Generation -> Git Staging -> Git Push) run sequentially and handle rollbacks on failure.",
+      "components": []
+    },
+    "apis": [],
+    "database": [],
+    "screenshots": [],
+    "description": "VS Code extension for automating repetitive Git and development workflows.",
+    "marketplace": "https://marketplace.visualstudio.com/items?itemName=RuntimeSync.gitgo"
   },
   {
     "name": "Arch-Flow",
@@ -376,7 +689,7 @@ export const projects: Project[] = [
       }
     ],
     "architecture": {
-      "image": "https://raw.githubusercontent.com/SujalPatil21/Arch-Flow/main/1.png",
+      "image": null,
       "description": "The ingestion service traverses the local file system, feeding files through an AST parser. The extracted dependency edge-list is passed to an intelligence layer that queries an LLM for semantic context. The combined graph data is served to the React frontend, which renders it using force-directed graph visualization libraries.",
       "components": []
     },
@@ -393,331 +706,9 @@ export const projects: Project[] = [
       }
     ],
     "database": [],
-    "projectStructure": "backend-dev2/\n  src/\n    ast-parser/\n    intelligence/\n    graph-builder/\nFrontend/\n  src/\n    components/GraphViewer/",
     "screenshots": [
-      "https://raw.githubusercontent.com/SujalPatil21/Arch-Flow/main/2.png",
-      "https://raw.githubusercontent.com/SujalPatil21/Arch-Flow/main/3.png"
+      "/assets/projects/arch-flow/screen_0_2.png"
     ],
-    "description": "Arch-Flow is an intelligent repository visualization tool that ingests raw source code, parses its Abstract Syntax Tree ..."
-  },
-  {
-    "name": "GitGo",
-    "slug": "gitgo",
-    "category": "Developer Tools",
-    "github": "https://github.com/SujalPatil21/GitGo",
-    "docs": "/projects/gitgo",
-    "stack": {
-      "frontend": [],
-      "backend": [
-        "Node.js",
-        "TypeScript"
-      ],
-      "database": [],
-      "infrastructure": [
-        "CLI",
-        "Git API"
-      ]
-    },
-    "overview": "GitGo is a streamlined command-line interface tool designed to automate the repetitive tasks associated with publishing coding solutions (like LeetCode or HackerRank) to GitHub. It handles file staging, metadata generation, and committing in one atomic pipeline.",
-    "problem": [
-      "Publishing daily algorithmic solutions requires repetitive folder creation and naming.",
-      "Writing consistent, high-quality READMEs for every solution is tedious.",
-      "Context switching between the IDE, terminal, and browser breaks developer flow."
-    ],
-    "solution": "A highly configurable CLI pipeline that detects the programming language, generates a standardized README, creates the appropriate folder structure, and automatically pushes the commit—all triggered by a single command.",
-    "features": [
-      {
-        "title": "Atomic Publishing Pipeline",
-        "description": "Handles file moving, README generation, and git pushing synchronously."
-      },
-      {
-        "title": "Language Auto-Detection",
-        "description": "Identifies the solution language via file extensions to format markdown blocks accurately."
-      },
-      {
-        "title": "Customizable Templates",
-        "description": "Allows developers to define their own markdown templates for problem descriptions."
-      }
-    ],
-    "architecture": {
-      "image": "https://raw.githubusercontent.com/SujalPatil21/GitGo/main/architecture.png",
-      "description": "GitGo operates as an executable Node.js CLI script. It utilizes the child_process module to interface with the local git binary, and the fs module to manipulate files. A pipeline executor pattern ensures that stages (Parsing -> Template Generation -> Git Staging -> Git Push) run sequentially and handle rollbacks on failure.",
-      "components": []
-    },
-    "apis": [],
-    "database": [],
-    "projectStructure": "src/\n  commands/\n  pipeline/\n  templates/\n  services/",
-    "screenshots": [
-      "https://raw.githubusercontent.com/SujalPatil21/GitGo/main/architecture.png"
-    ],
-    "description": "GitGo is a streamlined command-line interface tool designed to automate the repetitive tasks associated with publishing ..."
-  },
-  {
-    "name": "DISPATCHOPS",
-    "slug": "dispatchops",
-    "category": "Developer Tools",
-    "github": "https://github.com/SujalPatil21/DISPATCHOPS",
-    "docs": "/projects/dispatchops",
-    "stack": {
-      "frontend": [],
-      "backend": [
-        "Node.js"
-      ],
-      "database": [],
-      "infrastructure": []
-    },
-    "overview": "DISPATCHOPS is a system utility and operational tool designed for developers to manage deployment scripts, system services, and background task monitoring across varied environments.",
-    "problem": [
-      "Managing multiple operational deployment scripts across different servers is chaotic.",
-      "Developers lack centralized visibility into background task statuses."
-    ],
-    "solution": "A centralized operational dispatch tool that standardizes script execution, captures standard output logs dynamically, and reports health statuses.",
-    "features": [
-      {
-        "title": "Script Orchestration",
-        "description": "Executes chained deployment scripts with dependency resolution."
-      },
-      {
-        "title": "Log Aggregation",
-        "description": "Captures and streams stdout/stderr from background processes."
-      }
-    ],
-    "architecture": {
-      "image": null,
-      "description": "A modular CLI architecture that spawns background processes and manages their IPC streams for real-time logging and health checking.",
-      "components": []
-    },
-    "apis": [],
-    "database": [],
-    "projectStructure": "",
-    "screenshots": [],
-    "description": "DISPATCHOPS is a system utility and operational tool designed for developers to manage deployment scripts, system servic..."
-  },
-  {
-    "name": "Drill-Insight",
-    "slug": "drill-insight",
-    "category": "Data Science & AI",
-    "github": "https://github.com/SujalPatil21/Drill-Insight",
-    "docs": "/projects/drill-insight",
-    "stack": {
-      "frontend": [
-        "React"
-      ],
-      "backend": [
-        "Python",
-        "FastAPI"
-      ],
-      "database": [],
-      "infrastructure": [
-        "Pandas",
-        "Scikit-learn"
-      ]
-    },
-    "overview": "Drill-Insight is an analytical platform built to process heavy drilling logs, providing operational insights and anomaly detection through data science techniques.",
-    "problem": [
-      "Raw drilling sensor data is too noisy to interpret manually.",
-      "Operational anomalies are detected too late, leading to equipment failure."
-    ],
-    "solution": "A data pipeline that ingests sensor CSV logs, applies smoothing algorithms, and uses machine learning models to detect anomalies and visualize drilling efficiency.",
-    "features": [
-      {
-        "title": "Sensor Data Smoothing",
-        "description": "Applies rolling averages and noise-reduction algorithms to raw logs."
-      },
-      {
-        "title": "Anomaly Detection",
-        "description": "Highlights operational deviations using statistical thresholds."
-      }
-    ],
-    "architecture": {
-      "image": null,
-      "description": "The React frontend uploads large CSV files to the FastAPI backend. Pandas and Scikit-learn process the dataframes in-memory, computing metrics before returning JSON arrays for charting.",
-      "components": []
-    },
-    "apis": [],
-    "database": [],
-    "projectStructure": "",
-    "screenshots": [],
-    "description": "Drill-Insight is an analytical platform built to process heavy drilling logs, providing operational insights and anomaly..."
-  },
-  {
-    "name": "StaySplit",
-    "slug": "staysplit",
-    "category": "Web Apps",
-    "github": "https://github.com/SujalPatil21/StaySplit",
-    "docs": "/projects/staysplit",
-    "stack": {
-      "frontend": [
-        "React"
-      ],
-      "backend": [
-        "Node.js"
-      ],
-      "database": [
-        "MongoDB"
-      ],
-      "infrastructure": []
-    },
-    "overview": "StaySplit is a financial utility application that simplifies the process of tracking, dividing, and settling shared expenses during group travels and accommodations.",
-    "problem": [
-      "Tracking uneven shared expenses across large groups causes friction.",
-      "Calculating the optimal settlement path (who owes whom) is mathematically complex."
-    ],
-    "solution": "An intuitive web app where users log expenses. The backend applies a debt-simplification graph algorithm to minimize the total number of transactions needed to settle all balances.",
-    "features": [
-      {
-        "title": "Expense Logging",
-        "description": "Quickly log bills and split them evenly or by custom percentages."
-      },
-      {
-        "title": "Debt Simplification",
-        "description": "Algorithmically reduces complex debt networks into minimum required payments."
-      }
-    ],
-    "architecture": {
-      "image": null,
-      "description": "Standard MERN stack application. The React frontend interacts with an Express REST API, which persists transactions in MongoDB. Graph calculations are computed on the backend upon request.",
-      "components": []
-    },
-    "apis": [],
-    "database": [],
-    "projectStructure": "",
-    "screenshots": [],
-    "description": "StaySplit is a financial utility application that simplifies the process of tracking, dividing, and settling shared expe..."
-  },
-  {
-    "name": "Mind-Meal",
-    "slug": "mind-meal",
-    "category": "Web Apps",
-    "github": "https://github.com/SujalPatil21/Mind-Meal",
-    "docs": "/projects/mind-meal",
-    "stack": {
-      "frontend": [
-        "React"
-      ],
-      "backend": [
-        "Node.js"
-      ],
-      "database": [
-        "PostgreSQL"
-      ],
-      "infrastructure": []
-    },
-    "overview": "Mind-Meal is a smart nutrition and meal-planning application that helps users generate customized dietary schedules based on their personal health goals and preferences.",
-    "problem": [
-      "Manual meal planning is time-consuming and often lacks nutritional balance.",
-      "Users struggle to find recipes that strictly adhere to their dietary restrictions."
-    ],
-    "solution": "An intelligent recommendation engine that takes user constraints (calories, macros, allergies) and algorithmically generates weekly meal plans and shopping lists.",
-    "features": [
-      {
-        "title": "Macro Tracking",
-        "description": "Calculates daily nutritional intake against goals."
-      },
-      {
-        "title": "Automated Planning",
-        "description": "Generates diverse weekly meal schedules instantly."
-      }
-    ],
-    "architecture": {
-      "image": null,
-      "description": "React frontend interfacing with a robust Node.js backend. User profiles and nutritional databases are indexed in PostgreSQL for rapid relational querying.",
-      "components": []
-    },
-    "apis": [],
-    "database": [],
-    "projectStructure": "",
-    "screenshots": [],
-    "description": "Mind-Meal is a smart nutrition and meal-planning application that helps users generate customized dietary schedules base..."
-  },
-  {
-    "name": "Globe-Trotter",
-    "slug": "globe-trotter",
-    "category": "Web Apps",
-    "github": "https://github.com/SujalPatil21/Globe-Trotter",
-    "docs": "/projects/globe-trotter",
-    "stack": {
-      "frontend": [
-        "React"
-      ],
-      "backend": [
-        "Node.js"
-      ],
-      "database": [
-        "MongoDB"
-      ],
-      "infrastructure": []
-    },
-    "overview": "Globe-Trotter is a collaborative itinerary planner and social travel platform that allows users to discover destinations, plan trips with friends, and share their travel experiences.",
-    "problem": [
-      "Collaborating on travel itineraries across spreadsheets and chat apps is messy.",
-      "Discovering community-curated travel routes is difficult on standard booking sites."
-    ],
-    "solution": "A unified platform offering real-time collaborative itinerary editing, interactive maps, and a social feed for sharing completed journeys.",
-    "features": [
-      {
-        "title": "Collaborative Itineraries",
-        "description": "Multi-user editing for trip schedules and activities."
-      },
-      {
-        "title": "Interactive Maps",
-        "description": "Visual mapping of planned routes and lodging."
-      }
-    ],
-    "architecture": {
-      "image": null,
-      "description": "A scalable web architecture using React for the interface, Node.js/Express for API handling, and MongoDB for flexible document storage of complex trip data structures.",
-      "components": []
-    },
-    "apis": [],
-    "database": [],
-    "projectStructure": "",
-    "screenshots": [],
-    "description": "Globe-Trotter is a collaborative itinerary planner and social travel platform that allows users to discover destinations..."
-  },
-  {
-    "name": "Mob-Alert",
-    "slug": "mob-alert",
-    "category": "Web Apps",
-    "github": "https://github.com/SujalPatil21/Mob-Alert",
-    "docs": "/projects/mob-alert",
-    "stack": {
-      "frontend": [
-        "React"
-      ],
-      "backend": [
-        "Node.js"
-      ],
-      "database": [
-        "PostgreSQL"
-      ],
-      "infrastructure": []
-    },
-    "overview": "Mob-Alert is an early-warning communication system designed to disseminate critical security and safety alerts to large groups of localized users rapidly.",
-    "problem": [
-      "During local emergencies, targeted communication to specific geographic zones is slow.",
-      "Traditional SMS alerting lacks rich context and interactive verification."
-    ],
-    "solution": "A push-based alerting system that uses geographic targeting to push high-priority notifications to registered users within affected bounding boxes.",
-    "features": [
-      {
-        "title": "Geospatial Targeting",
-        "description": "Broadcasts messages only to users registered within specific coordinate bounds."
-      },
-      {
-        "title": "High-Throughput Delivery",
-        "description": "Optimized broadcasting queues for rapid message dissemination."
-      }
-    ],
-    "architecture": {
-      "image": null,
-      "description": "Node.js backend utilizing task queues to handle fan-out message broadcasting efficiently, backed by PostgreSQL for user spatial indexing.",
-      "components": []
-    },
-    "apis": [],
-    "database": [],
-    "projectStructure": "",
-    "screenshots": [],
-    "description": "Mob-Alert is an early-warning communication system designed to disseminate critical security and safety alerts to large ..."
+    "description": "Repository visualization tool that analyzes code structure and generates architectural insights."
   }
 ];
