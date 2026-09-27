@@ -10,7 +10,10 @@ const Home = () => {
   return (
     <div className="max-w-[1100px] mx-auto py-12 px-6 bg-white min-h-screen text-gray-900 font-sans">
       <header className="mb-12">
-        <h1 className="text-3xl font-semibold">Projects</h1>
+        <h1 className="text-3xl font-semibold mb-3">
+          <a href="https://sujal-projects.pages.dev/" className="text-blue-600 hover:underline">Projects</a>
+        </h1>
+        <p className="text-gray-700">Documenting my projects, experiments, and ideas — turning curious questions into structured systems and lines of code.</p>
       </header>
 
       <section className="mb-12">
@@ -139,7 +142,7 @@ const ProjectPage = () => {
       <Link to="/" className="text-blue-600 hover:underline text-sm mb-6 inline-block">
         &larr; Back to Projects
       </Link>
-      
+
       <header className="mb-10">
         <h1 className="text-3xl font-semibold mb-3">{project.name}</h1>
         <p className="text-gray-700 mb-4">{project.description}</p>
@@ -217,7 +220,7 @@ const ProjectPage = () => {
       {(project.apis.length > 0 || project.database.length > 0) && (
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-4">Engineering Details</h2>
-          
+
           {project.apis.length > 0 && (
             <div className="mb-6">
               <h3 className="font-semibold mb-3">API Architecture</h3>
@@ -296,7 +299,7 @@ const App = () => {
             <Route path="/projects/:slug" element={<ProjectPage />} />
           </Routes>
         </main>
-        
+
         <footer className="bg-white border-t border-slate-200 py-8">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <p className="text-slate-500 text-sm font-medium">© 2026 Sujal Patil. Built with React & Tailwind CSS.</p>
