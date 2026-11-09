@@ -24,6 +24,13 @@ export interface Project {
   };
   apis: { method: string; endpoint: string; purpose: string }[];
   database: { entity: string; fields: string[] }[];
+  benchmark?: {
+    summary?: string;
+    metrics?: { label: string; value: string }[];
+    environment?: string;
+    notes?: string[];
+  };
+  screenshotCaptions?: Record<string, string>;
   screenshots: string[];
 }
 
@@ -131,6 +138,283 @@ export const projects: Project[] = [
       "/assets/projects/geo-watch/screen_0_img2.png"
     ],
     "description": "Real-time crowd safety platform for monitoring public events and geo-fenced incidents."
+  },
+  {
+    "name": "JUNCTION",
+    "slug": "junction",
+    "category": "Web Apps",
+    "github": "https://github.com/SujalPatil21/Junction",
+    "docs": "/projects/junction",
+    "description": "Mega-event operations platform for crowd monitoring, predictive forecasting, AI recommendations, and 3D stadium visualization.",
+    "stack": {
+      "frontend": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript"
+      ],
+      "backend": [
+        "Spring Boot",
+        "Java 21"
+      ],
+      "database": [
+        "PostgreSQL"
+      ],
+      "infrastructure": [
+        "Python",
+        "YOLOv12",
+        "ByteTrack",
+        "Flutter",
+        "Docker",
+        "Grafana k6"
+      ]
+    },
+    "overview": "JUNCTION is an intelligent mega-event operations platform designed to help organizers monitor crowd conditions, anticipate operational risks, and coordinate venue operations. It combines multi-source sensor ingestion, crowd-state analysis, predictive forecasting, AI-assisted recommendations, computer vision, and an interactive 3D stadium digital twin.",
+    "problem": [
+      "Large events generate operational data across disconnected systems such as CCTV feeds, sensors, venue zones, and attendee applications.",
+      "Organizers lack centralized visibility into real-time crowd pressure and exit queue dynamics.",
+      "Emergency updates and crowd redirection decisions are hindered by manual, delayed reporting across disparate stakeholder teams.",
+      "Identifying emerging crowd bottlenecks before they escalate requires computationally heavy multi-source ingestion and short-horizon forecasting."
+    ],
+    "solution": "A modular platform combining a Java 21 Spring Boot backend, Next.js web frontend, PostgreSQL database, Python computer-vision bridge, and Flutter attendee application. It processes sensor observations, evaluates operational conditions, generates forecasts, and presents recommendations for organizer review.",
+    "features": [
+      {
+        "title": "Sensor Ingestion",
+        "description": "Processing normalized observations from computer-vision and sensor sources via authenticated REST ingestion pipelines."
+      },
+      {
+        "title": "Sensor Fusion",
+        "description": "Combining multi-modal observations to evaluate real-time operational crowd conditions, pressure indices, and coverage honesty across venue zones."
+      },
+      {
+        "title": "Predictive Forecasting",
+        "description": "Short-horizon crowd surge and resource pressure forecasts across 15, 30, 45, and 60-minute planning horizons."
+      },
+      {
+        "title": "Operational Recommendations",
+        "description": "Generating proposed operational interventions with a human-in-the-loop organizer review, approval, and rejection workflow."
+      },
+      {
+        "title": "3D Stadium Digital Twin",
+        "description": "Interactive Wankhede Stadium visualization with crowd-flow context, stand occupancy heatmaps, gate navigation, and spatial situational awareness."
+      },
+      {
+        "title": "Computer Vision",
+        "description": "Python-based YOLOv12 and ByteTrack pipeline for privacy-preserving CCTV observation processing, pedestrian counting, and tripwire directional flux calculation."
+      },
+      {
+        "title": "Mobile Attendee Experience",
+        "description": "Flutter application for event information, dynamic venue routing, and attendee-facing hospitality incentives."
+      },
+      {
+        "title": "Hospitality Coordination",
+        "description": "Restaurant partner inventory and operational demand coordination to balance venue egress dining traffic."
+      }
+    ],
+    "architecture": {
+      "image": null,
+      "description": "JUNCTION utilizes a decoupled multi-service architecture designed for resilient mega-event operations. The Next.js 16 and React 19 web frontend acts as the organizer command center, rendering live venue telemetry and the Three.js / Cesium-powered 3D stadium digital twin. The Spring Boot backend (running on Java 21 LTS with Apache Tomcat 10.1 and HikariCP) serves as the centralized core, executing sensor fusion, forecasting algorithms, and the stateful intervention lifecycle. PostgreSQL 18 handles persistence for profiles, restaurants, memberships, inventory logs, immutable audit events, and operational interventions via Flyway migrations. An edge Python computer-vision bridge executes YOLOv12 detection and ByteTrack tracking on CCTV feeds, serializing normalized observation batches directly to the backend over Bearer-authenticated REST endpoints. Concurrently, attendees access event advisories through a cross-platform Flutter mobile client consuming public telemetry endpoints.",
+      "components": [
+        "Next.js 16 & React 19 Web Command Center",
+        "Java 21 & Spring Boot 4.1.2 Backend Engine",
+        "PostgreSQL 18 Relational Persistence Layer",
+        "Python YOLOv12 & ByteTrack Computer-Vision Bridge",
+        "Flutter Cross-Platform Mobile Attendee Application",
+        "Clerk OAuth2 / RS256 JWT & Edge Bearer Token Security Gateways"
+      ]
+    },
+    "apis": [
+      {
+        "method": "GET",
+        "endpoint": "/api/health",
+        "purpose": "Check backend service health, container liveness, and active configuration profile."
+      },
+      {
+        "method": "GET",
+        "endpoint": "/api/scenarios",
+        "purpose": "Retrieve available and active operational scenarios for event simulation."
+      },
+      {
+        "method": "POST",
+        "endpoint": "/api/scenarios",
+        "purpose": "Update the active operational scenario to trigger simulated crowd surge conditions."
+      },
+      {
+        "method": "GET",
+        "endpoint": "/api/observations",
+        "purpose": "Retrieve recent sensor observations buffer, optionally filtered by zone ID."
+      },
+      {
+        "method": "POST",
+        "endpoint": "/api/observations",
+        "purpose": "Ingest normalized observation batches from cv_bridge edge devices or sensor services."
+      },
+      {
+        "method": "GET",
+        "endpoint": "/api/zones",
+        "purpose": "Retrieve fused operational states and pressure metrics for all registered venue zones."
+      },
+      {
+        "method": "GET",
+        "endpoint": "/api/zones/{zoneId}",
+        "purpose": "Retrieve a specific operational zone fused state, capacity, and density metrics."
+      },
+      {
+        "method": "GET",
+        "endpoint": "/api/zones/coverage",
+        "purpose": "Retrieve data honesty and sensor coverage profiles across all operational venue zones."
+      },
+      {
+        "method": "GET",
+        "endpoint": "/api/forecast",
+        "purpose": "Generate short-horizon zone crowd surge forecasts across 15, 30, 45, and 60-minute horizons."
+      },
+      {
+        "method": "GET",
+        "endpoint": "/api/recommendations",
+        "purpose": "Retrieve all proposed, approved, and executed operational interventions."
+      },
+      {
+        "method": "POST",
+        "endpoint": "/api/recommendations/generate",
+        "purpose": "Generate proposed operational interventions from real-time zone states."
+      },
+      {
+        "method": "POST",
+        "endpoint": "/api/recommendations/plan",
+        "purpose": "Generate a multi-horizon recommendation and heuristic dispatch plan from operational context."
+      },
+      {
+        "method": "POST",
+        "endpoint": "/api/recommendations/{id}/approve",
+        "purpose": "Approve a proposed operational intervention and record organizer rationale."
+      },
+      {
+        "method": "POST",
+        "endpoint": "/api/recommendations/{id}/reject",
+        "purpose": "Reject a proposed operational intervention with documented operator justification."
+      }
+    ],
+    "database": [
+      {
+        "entity": "profiles",
+        "fields": [
+          "id (UUID, PK)",
+          "clerk_user_id (TEXT, UNIQUE) — External Clerk identity anchor",
+          "name (TEXT)",
+          "email (TEXT)",
+          "role (user_role ENUM: ORGANIZER | RESTAURANT_PARTNER | ATTENDEE)",
+          "created_at (TIMESTAMPTZ)",
+          "updated_at (TIMESTAMPTZ)"
+        ]
+      },
+      {
+        "entity": "restaurants",
+        "fields": [
+          "id (TEXT, PK, e.g. 'R1', 'R2')",
+          "name (TEXT)",
+          "zone (TEXT) — Operational zone reference (e.g. 'ZONE_A', 'ZONE_WANKHEDE')",
+          "cuisine (TEXT)",
+          "address (TEXT)",
+          "total_capacity (INTEGER)",
+          "available_covers (INTEGER)",
+          "expected_reservations (INTEGER)",
+          "price_range (TEXT)",
+          "lat / lng (DOUBLE PRECISION)",
+          "is_active (BOOLEAN)",
+          "created_at / updated_at (TIMESTAMPTZ)"
+        ]
+      },
+      {
+        "entity": "restaurant_memberships",
+        "fields": [
+          "id (UUID, PK)",
+          "profile_id (UUID, FK -> profiles.id)",
+          "restaurant_id (TEXT, FK -> restaurants.id)",
+          "role (membership_role ENUM: OWNER | MANAGER | STAFF)",
+          "created_at (TIMESTAMPTZ)",
+          "CONSTRAINT uq_restaurant_membership UNIQUE (profile_id, restaurant_id)"
+        ]
+      },
+      {
+        "entity": "restaurant_inventory",
+        "fields": [
+          "id (UUID, PK)",
+          "restaurant_id (TEXT, FK -> restaurants.id)",
+          "reported_by_profile_id (UUID, FK -> profiles.id, ON DELETE SET NULL)",
+          "available_tables (INTEGER)",
+          "available_covers (INTEGER)",
+          "expected_covers (INTEGER)",
+          "out_of_order_tables (INTEGER)",
+          "notes (TEXT)",
+          "recorded_at (TIMESTAMPTZ)"
+        ]
+      },
+      {
+        "entity": "audit_events",
+        "fields": [
+          "id (TEXT, PK)",
+          "actor_id (TEXT)",
+          "actor_role (TEXT)",
+          "category (TEXT)",
+          "target_entity_type (TEXT)",
+          "target_entity_id (TEXT)",
+          "change_summary (TEXT)",
+          "rationale (TEXT)",
+          "previous_state_json (TEXT)",
+          "new_state_json (TEXT)",
+          "is_simulated_scenario (BOOLEAN)",
+          "timestamp (TIMESTAMPTZ)"
+        ]
+      },
+      {
+        "entity": "operational_interventions",
+        "fields": [
+          "id (TEXT, PK)",
+          "type (TEXT)",
+          "title (TEXT)",
+          "description (TEXT)",
+          "target_zone_id (TEXT)",
+          "status (TEXT: PROPOSED | APPROVED | REJECTED | EXECUTED)",
+          "urgency (TEXT: LOW | MEDIUM | HIGH | CRITICAL)",
+          "requires_approval (BOOLEAN)",
+          "approval_role_required (TEXT)",
+          "rationale (TEXT)",
+          "confidence_score (DOUBLE PRECISION)",
+          "expected_pressure_reduction_percent (INTEGER)",
+          "proposed_at (TIMESTAMPTZ)",
+          "expires_at (TIMESTAMPTZ)",
+          "approved_at (TIMESTAMPTZ)",
+          "approved_by_user_id (TEXT)",
+          "rejection_reason (TEXT)"
+        ]
+      }
+    ],
+    "benchmark": {
+      "summary": "Measured using Grafana k6 under a 250 concurrent virtual user mixed-workload load test targeting the optimized Spring Boot 4.1.2 backend and local PostgreSQL database. The benchmark reflects local execution performance and does not represent guaranteed production cloud capacity.",
+      "metrics": [
+        { "label": "Peak REST Throughput", "value": "3,284.94 requests/sec" },
+        { "label": "Peak Concurrent Virtual Users", "value": "250 VUs" },
+        { "label": "Requests Processed (Single Run)", "value": "262,809 requests (80s duration)" },
+        { "label": "Cumulative Campaign Requests", "value": "737,293 requests (0 HTTP failures)" },
+        { "label": "Response Latency (p95)", "value": "59.36 ms (median: 15.57 ms)" },
+        { "label": "Progressive Load Latency (p95)", "value": "32.21 ms (median: 5.55 ms)" },
+        { "label": "Reported HTTP Failure Rate", "value": "0.00% (0 errors across 262,809 reqs)" },
+        { "label": "500 Client Telemetry Handling", "value": "100.00% success (HTTP polling fallback)" }
+      ],
+      "environment": "Microsoft Windows 11 Home (64-bit, Build 10.0.26300) | 13th Gen Intel(R) Core(TM) i5-13450HX (10 cores: 6 P-cores + 4 E-cores, 16 threads, 2.4-4.6 GHz) | 16 GB DDR5 RAM | PCIe 4.0 NVMe SSD | Oracle Java HotSpot 21.0.11+9-LTS | Spring Boot 4.1.2 / Apache Tomcat 10.1 | PostgreSQL 18.4 (local, port 5432) | HikariCP 5.1.0 (pool: 25) | Grafana k6 v1.6.0.",
+      "notes": [
+        "Local Benchmark Scope: The backend and PostgreSQL database were tested locally on the same host machine without network hops, measuring application framework, JVM, and database engine limits rather than network transmission overhead.",
+        "Real-Time Telemetry Architecture: The Spring Boot backend codebase does not register a WebSocket or STOMP broker (@EnableWebSocketMessageBroker is not active). Real-time telemetry is maintained via active HTTP polling and SSE against /api/scenarios and /api/observations.",
+        "500 Concurrent Clients Test: When 500 virtual users attempted connection to /ws, the uninstrumented route returned HTTP 404, prompting clients to execute the active HTTP polling fallback mechanism. The fallback polling transport maintained a 100.00% success rate across 4,732 requests with 0 dropped sessions. JUNCTION makes no claim of native WebSocket concurrency.",
+        "Performance Tuning: Scaling the HikariCP connection pool from 5 to 25 connections and suppressing high-frequency Hibernate SQL console I/O logging reduced p95 latency from 1,090.26 ms to 59.36 ms (an 18.36x latency reduction) under 250 VU mixed concurrency."
+      ]
+    },
+    "screenshots": [
+      "/assets/projects/Junction/image.png"
+    ],
+    "screenshotCaptions": {
+      "/assets/projects/Junction/image.png": "Interactive 3D Stadium Digital Twin — Wankhede Stadium"
+    }
   },
   {
     "name": "AASHA",

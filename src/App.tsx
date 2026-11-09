@@ -214,6 +214,16 @@ const ProjectPage = () => {
           {project.architecture.description.length > 30 && (
             <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">{project.architecture.description}</p>
           )}
+          {project.architecture.components && project.architecture.components.length > 0 && (
+            <div className="mt-4">
+              <h3 className="font-semibold mb-2">Core Components</h3>
+              <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                {project.architecture.components.map((c, i) => (
+                  <li key={i}>{c}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </section>
       )}
 
@@ -267,11 +277,75 @@ const ProjectPage = () => {
         </section>
       )}
 
+      {project.benchmark && (
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold mb-4">Performance Benchmark</h2>
+          {project.benchmark.summary && (
+            <p className="text-gray-700 leading-relaxed mb-4 whitespace-pre-wrap">{project.benchmark.summary}</p>
+          )}
+
+          {project.benchmark.metrics && project.benchmark.metrics.length > 0 && (
+            <div className="overflow-x-auto mb-6">
+              <table className="w-full text-sm text-left whitespace-nowrap border border-gray-200">
+                <thead>
+                  <tr className="bg-gray-50 border-b border-gray-200">
+                    <th className="px-4 py-2 font-medium">Benchmark Metric</th>
+                    <th className="px-4 py-2 font-medium">Measured Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {project.benchmark.metrics.map((metric, i) => (
+                    <tr key={i} className="border-b border-gray-100 last:border-0 align-top">
+                      <td className="px-4 py-2 text-gray-700">{metric.label}</td>
+                      <td className="px-4 py-2 text-gray-700 font-mono">{metric.value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {project.benchmark.environment && (
+            <div className="mb-4">
+              <h3 className="font-semibold mb-2">Test Environment</h3>
+              <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap">{project.benchmark.environment}</p>
+            </div>
+          )}
+
+          {project.benchmark.notes && project.benchmark.notes.length > 0 && (
+            <div>
+              <h3 className="font-semibold mb-2">Benchmark Constraints & Observations</h3>
+              <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                {project.benchmark.notes.map((note, i) => (
+                  <li key={i}>{note}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+      )}
+
       {project.screenshots && project.screenshots.length > 0 && (
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-4">Screenshots</h2>
-          <div className="border border-gray-200">
-            <img src={project.screenshots[0]} alt={`${project.name} Screenshot`} className="max-w-full h-auto block" loading="lazy" />
+          <div className="space-y-6">
+            {project.screenshots.map((screenshot, i) => (
+              <div key={i}>
+                <div className="border border-gray-200">
+                  <img
+                    src={screenshot}
+                    alt={project.screenshotCaptions?.[screenshot] || `${project.name} Screenshot`}
+                    className="max-w-full h-auto block"
+                    loading="lazy"
+                  />
+                </div>
+                {project.screenshotCaptions?.[screenshot] && (
+                  <p className="mt-2 text-sm text-gray-600 font-medium">
+                    {project.screenshotCaptions[screenshot]}
+                  </p>
+                )}
+              </div>
+            ))}
           </div>
         </section>
       )}
